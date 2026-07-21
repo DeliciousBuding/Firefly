@@ -8,11 +8,11 @@ export const profileConfig: ProfileConfig = {
 	// 3. 远程 URL："https://example.com/avatar.jpg"
 	avatar: "assets/images/avatar.avif",
 
-	// 名字
-	name: "DeliciousBuding",
+	// 名字 — 品牌 delicious233；中文名「美味的布丁」写在 bio
+	name: "delicious233",
 
 	// 个人签名
-	bio: "ops · AI · edge · notes",
+	bio: "美味的布丁 · ops · AI · edge · notes",
 
 	// 链接配置
 	// 已经预装的图标集：fa7-brands，fa7-regular，fa7-solid，material-symbols，simple-icons

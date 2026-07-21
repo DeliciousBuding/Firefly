@@ -5,23 +5,25 @@ import type { SiteConfig } from "@/types/siteConfig";
 const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
-	// 站点标题
-	title: "VectorControl",
+	// 站点标题 — 个人品牌 delicious233；中文名「美味的布丁」
+	title: "delicious233",
 
 	// 站点副标题
-	subtitle: "blog · notes · ops",
+	subtitle: "美味的布丁 · blog · notes · ops",
 
 	// 站点 URL（预发；生产切根域时改这里）
 	site_url: "https://blog-web.vectorcontrol.tech",
 
 	// 站点描述
 	description:
-		"DeliciousBuding 的个人博客与技术笔记（Firefly 主题预发）。运维 SSOT 仍在 server 仓，产品面在 TokenDance Lab。",
+		"delicious233（美味的布丁）的个人博客与技术笔记。GitHub DeliciousBuding · 运维 SSOT 在 server 仓 · 产品面 TokenDance Lab。",
 
 	// 站点关键词
 	keywords: [
-		"VectorControl",
+		"delicious233",
+		"美味的布丁",
 		"DeliciousBuding",
+		"VectorControl",
 		"博客",
 		"技术博客",
 		"Astro",
@@ -78,7 +80,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "VectorControl",
+		title: "delicious233",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
