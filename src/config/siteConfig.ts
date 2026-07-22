@@ -1,7 +1,8 @@
 import type { SiteConfig } from "@/types/siteConfig";
 
-// 定义站点语言
-// 语言代码，例如：'zh_CN', 'zh_TW', 'en', 'ja', 'ru', 'ko'。
+// 站点语言：个人博客正文以中文为主（delicious233 / 美味的布丁）。
+// 公开站统一规则见 server public-site-i18n-seo.md；blog 壳 L1：中文权威，不对称 /en 前缀。
+// 若日后要英文壳，再加 /en 落地而非改默认正文语言。
 const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
