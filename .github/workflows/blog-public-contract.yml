@@ -88,3 +88,7 @@ jobs:
           grep -Fxq '  X-Content-Type-Options: nosniff' dist/_headers
           grep -Fxq '  Referrer-Policy: strict-origin-when-cross-origin' dist/_headers
           grep -Fxq '  Permissions-Policy: camera=(), microphone=(), geolocation=()' dist/_headers
+          grep -Fxq 'https://blog-web.vectorcontrol.tech/*' dist/_headers
+          grep -Fxq 'https://vectorcontrol-web.pages.dev/*' dist/_headers
+          grep -Fxq 'https://:version.vectorcontrol-web.pages.dev/*' dist/_headers
+          test "$(grep -Fc '  X-Robots-Tag: noindex, nofollow' dist/_headers)" -eq 3
