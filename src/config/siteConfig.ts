@@ -14,7 +14,7 @@ export const siteConfig: SiteConfig = {
 
 	// 生产权威 origin；预发构建必须显式注入 PUBLIC_SITE_ORIGIN。
 	site_url: (() => {
-		const configured = import.meta.env.PUBLIC_SITE_ORIGIN || "https://blog.vectorcontrol.tech";
+		const configured = process.env.PUBLIC_SITE_ORIGIN || "https://blog.vectorcontrol.tech";
 		const url = new URL(configured);
 		if (
 			url.protocol !== "https:" ||
