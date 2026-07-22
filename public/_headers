@@ -1,0 +1,13 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+https://blog-web.vectorcontrol.tech/*
+  X-Robots-Tag: noindex, nofollow
+
+https://vectorcontrol-web.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:version.vectorcontrol-web.pages.dev/*
+  X-Robots-Tag: noindex, nofollow

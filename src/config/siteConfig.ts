@@ -12,8 +12,22 @@ export const siteConfig: SiteConfig = {
 	// 站点副标题
 	subtitle: "美味的布丁 · blog · notes · ops",
 
-	// 站点 URL（预发；生产切根域时改这里）
-	site_url: "https://blog-web.vectorcontrol.tech",
+	// 生产权威 origin；预发构建必须显式注入 PUBLIC_SITE_ORIGIN。
+	site_url: (() => {
+		const configured = process.env.PUBLIC_SITE_ORIGIN || "https://blog.vectorcontrol.tech";
+		const url = new URL(configured);
+		if (
+			url.protocol !== "https:" ||
+			url.username ||
+			url.password ||
+			url.pathname !== "/" ||
+			url.search ||
+			url.hash
+		) {
+			throw new Error(`PUBLIC_SITE_ORIGIN must be an absolute HTTPS origin: ${configured}`);
+		}
+		return url.origin;
+	})(),
 
 	// 站点描述
 	description:
