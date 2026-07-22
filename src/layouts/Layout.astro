@@ -83,6 +83,7 @@ if (!lang) {
 	lang = `${siteConfig.lang}`;
 }
 const siteLang = lang.replace("_", "-");
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? siteConfig.site_url);
 
 // 使用固定的banner偏移量，position配置用于图片定位
 ---
@@ -129,9 +130,10 @@ const siteLang = lang.replace("_", "-");
       )
     }
     <meta name="author" content={profileConfig.name} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:site_name" content={siteConfig.title} />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta
       property="og:description"
@@ -147,7 +149,7 @@ const siteLang = lang.replace("_", "-");
     }
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={pageTitle} />
     <meta
       name="twitter:description"
