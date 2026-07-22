@@ -100,7 +100,7 @@ if (htmlDocumentCount === 0) fail("no complete HTML documents were found");
 
 const requiredFiles = [
 	"index.html",
-	"rss/index.xml",
+	"rss.xml",
 	"robots.txt",
 	"sitemap-index.xml",
 	"_headers",
@@ -133,7 +133,7 @@ async function requireText(path, literal, label) {
 	}
 }
 
-await requireText("rss/index.xml", productionOrigin, "production RSS origin");
+await requireText("rss.xml", productionOrigin, "production RSS origin");
 await requireText(
 	"robots.txt",
 	`Sitemap: ${productionOrigin}/sitemap-index.xml`,
