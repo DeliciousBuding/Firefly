@@ -40,55 +40,6 @@ jobs:
           PUBLIC_SITE_ORIGIN: https://blog.vectorcontrol.tech
         run: pnpm build
       - name: Verify discovery and static headers
-        shell: bash
-        run: |
-          set -euo pipefail
-          production_origin='https://blog.vectorcontrol.tech'
-          forbidden_origins=(
-            'https://blog-web.vectorcontrol.tech'
-            'https://vectorcontrol-web.pages.dev'
-          )
-
-          test -f dist/index.html
-          test -f dist/rss/index.xml
-          test -f dist/robots.txt
-          test -f dist/sitemap-index.xml
-          test -f dist/_headers
-
-          mapfile -d '' html_documents < <(
-            grep -R -lZ '<html' dist --include='*.html'
-          )
-          test "${#html_documents[@]}" -gt 0
-          for file in "${html_documents[@]}"; do
-            canonical_count="$(grep -o 'rel="canonical"' "$file" | wc -l | tr -d ' ')"
-            if [[ "$canonical_count" != '1' ]]; then
-              echo "$file contains $canonical_count canonical links; expected exactly one" >&2
-              exit 1
-            fi
-            grep -Fq "rel=\"canonical\" href=\"${production_origin}/" "$file"
-            grep -Fq "property=\"og:url\" content=\"${production_origin}/" "$file"
-            grep -Fq "property=\"twitter:url\" content=\"${production_origin}/" "$file"
-          done
-
-          grep -Fq "${production_origin}" dist/rss/index.xml
-          grep -Fq "Sitemap: ${production_origin}/sitemap-index.xml" dist/robots.txt
-          grep -Fq "${production_origin}" dist/sitemap-index.xml
-
-          mapfile -d '' discovery_files < <(
-            find dist -type f \( -name '*.html' -o -name '*.xml' -o -name 'robots.txt' \) -print0
-          )
-          for forbidden_origin in "${forbidden_origins[@]}"; do
-            if grep -Fl "${forbidden_origin}" "${discovery_files[@]}"; then
-              echo "forbidden staging origin leaked into production discovery output: ${forbidden_origin}" >&2
-              exit 1
-            fi
-          done
-
-          grep -Fxq '/*' dist/_headers
-          grep -Fxq '  X-Content-Type-Options: nosniff' dist/_headers
-          grep -Fxq '  Referrer-Policy: strict-origin-when-cross-origin' dist/_headers
-          grep -Fxq '  Permissions-Policy: camera=(), microphone=(), geolocation=()' dist/_headers
-          grep -Fxq 'https://blog-web.vectorcontrol.tech/*' dist/_headers
-          grep -Fxq 'https://vectorcontrol-web.pages.dev/*' dist/_headers
-          grep -Fxq 'https://:version.vectorcontrol-web.pages.dev/*' dist/_headers
-          test "$(grep -Fc '  X-Robots-Tag: noindex, nofollow' dist/_headers)" -eq 3
+        env:
+          PUBLIC_SITE_ORIGIN: https://blog.vectorcontrol.tech
+        run: node scripts/verify-public-contract.mjs dist
