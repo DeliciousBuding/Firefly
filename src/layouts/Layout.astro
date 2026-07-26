@@ -25,6 +25,7 @@ import {
 import { defaultFavicons } from "@/constants/icon";
 import type { Favicon } from "@/types/config";
 import { isHomePage } from "@/utils/layout-utils";
+import { isIndexable } from "@/utils/seo-utils";
 import { url } from "@/utils/url-utils";
 
 import "@/styles/main.css";
@@ -84,6 +85,15 @@ if (!lang) {
 }
 const siteLang = lang.replace("_", "-");
 
+// SEO 索引开关：预发构建（Astro.site 非生产域）一律 noindex,nofollow，
+// 生产域构建自动放开（见 src/utils/seo-utils.ts）。canonical 跟随构建源。
+const robotsContent = isIndexable(Astro.site)
+	? "max-image-preview:large"
+	: "noindex, nofollow";
+const canonicalUrl = Astro.site
+	? new URL(Astro.url.pathname, Astro.site).href
+	: undefined;
+
 // 使用固定的banner偏移量，position配置用于图片定位
 ---
 
@@ -129,6 +139,8 @@ const siteLang = lang.replace("_", "-");
       )
     }
     <meta name="author" content={profileConfig.name} />
+    <meta name="robots" content={robotsContent} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
     <meta property="og:site_name" content={siteConfig.title} />
     <meta property="og:url" content={Astro.url} />

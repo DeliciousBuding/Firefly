@@ -54,9 +54,15 @@ const adapter = process.env.CF_WORKERS
 		})
 	: undefined;
 
+// 站点构建源：PUBLIC_SITE_ORIGIN 环境变量优先（CI / 生产割接用），
+// 否则回落到 siteConfig.site_url（当前为预发 blog-web）。
+// 仅当该值等于生产域 https://vectorcontrol.tech 时，robots meta 与
+// robots.txt 才放开索引 —— 见 src/utils/seo-utils.ts。
+const siteOrigin = process.env.PUBLIC_SITE_ORIGIN || siteConfig.site_url;
+
 // https://astro.build/config
 export default defineConfig({
-	site: siteConfig.site_url,
+	site: siteOrigin,
 
 	base: "/",
 	trailingSlash: "always",
@@ -256,7 +262,7 @@ export default defineConfig({
 					rehypeImageReferrerPolicy,
 					{ domains: siteConfig.imageOptimization?.noReferrerDomains || [] },
 				],
-				[rehypeExternalLinks, { siteUrl: siteConfig.site_url }],
+				[rehypeExternalLinks, { siteUrl: siteOrigin }],
 				[rehypeEmailProtection, { method: "base64" }], // 邮箱保护插件，支持 'base64' 或 'rot13'
 				[
 					rehypeComponents,

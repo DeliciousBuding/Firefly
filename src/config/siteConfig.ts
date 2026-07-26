@@ -12,7 +12,9 @@ export const siteConfig: SiteConfig = {
 	// 站点副标题
 	subtitle: "美味的布丁 · blog · notes · ops",
 
-	// 站点 URL（预发；生产切根域时改这里）
+	// 站点 URL（预发 blog-web；构建时环境变量 PUBLIC_SITE_ORIGIN 可覆盖）。
+	// 生产割接：设 PUBLIC_SITE_ORIGIN=https://vectorcontrol.tech 或改这里为生产域，
+	// robots meta / robots.txt 随之自动放开索引（见 src/utils/seo-utils.ts）。
 	site_url: "https://blog-web.vectorcontrol.tech",
 
 	// 站点描述
