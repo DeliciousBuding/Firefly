@@ -1,16 +1,16 @@
 import type { SiteConfig } from "@/types/siteConfig";
 
-// 站点语言：个人博客正文以中文为主（delicious233 / 美味的布丁）。
-// 公开站统一规则见 server public-site-i18n-seo.md；blog 壳 L1：中文权威，不对称 /en 前缀。
-// 若日后要英文壳，再加 /en 落地而非改默认正文语言。
-const SITE_LANG = "zh_CN";
+// Public shell follows the shared en-root contract. Individual posts keep
+// their own language and canonical URL; this L1 blog does not create a
+// duplicate /en tree.
+const SITE_LANG = "en";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题 — 个人品牌 delicious233；中文名「美味的布丁」
 	title: "delicious233",
 
 	// 站点副标题
-	subtitle: "美味的布丁 · blog · notes · ops",
+	subtitle: "blog · notes · ops",
 
 	// 站点 URL（预发 blog-web；构建时环境变量 PUBLIC_SITE_ORIGIN 可覆盖）。
 	// 生产割接：设 PUBLIC_SITE_ORIGIN=https://vectorcontrol.tech 或改这里为生产域，

@@ -1,0 +1,15 @@
+name = "vectorcontrol-web-router"
+main = "src/index.mjs"
+compatibility_date = "2026-07-01"
+workers_dev = true
+preview_urls = false
+
+routes = [
+  { pattern = "vectorcontrol.tech/*", zone_name = "vectorcontrol.tech" },
+  { pattern = "www.vectorcontrol.tech/*", zone_name = "vectorcontrol.tech" }
+]
+
+[vars]
+PAGES_BASE = "https://vectorcontrol-web.pages.dev"
+ORIGIN_HOST = "vectorcontrol.tech"
+ORIGIN_RESOLVE_HOST = "edge-hk1.vectorcontrol.tech"
