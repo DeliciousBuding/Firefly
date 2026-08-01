@@ -19,7 +19,7 @@ export const siteConfig: SiteConfig = {
 
 	// 站点描述
 	description:
-		"delicious233（美味的布丁）的个人博客与技术笔记。GitHub DeliciousBuding · 运维 SSOT 在 server 仓 · 产品面 TokenDance Lab。",
+		"delicious233（美味的布丁）的个人博客与技术笔记：AI 原生开发工具、模型网关与基础设施。GitHub DeliciousBuding · 产品面 TokenDance Lab。",
 
 	// 站点关键词
 	keywords: [
