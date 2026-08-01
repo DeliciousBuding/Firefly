@@ -29,8 +29,8 @@ export const siteConfig: SiteConfig = {
 		"VectorControl",
 		"博客",
 		"技术博客",
-		"Astro",
-		"Firefly",
+		"AI",
+		"ops",
 	],
 
 	// 主题色
