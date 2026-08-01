@@ -1,0 +1,46 @@
+name: Pages CD
+
+# 博客自动部署：push 到 vectorcontrol-blog（生产分支）→ 构建 → Cloudflare Pages
+# 生产域 vectorcontrol.tech 由 Pages custom domain 承载，CI 不碰 DNS。
+# 政策：server 仓 github-actions-ci-cd-policy.md 类 E 变体（private 仓 + Pages CD）
+
+on:
+  push:
+    branches: [vectorcontrol-blog]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: pnpm/action-setup@008330803749db0355799c700092d9a85fd074e9 # v6.0.9
+        with:
+          version: 9
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 生产构建：必须带生产域 env，robots meta / robots.txt 才放开索引（seo-utils）
+      - name: Build (production origin)
+        run: pnpm build
+        env:
+          PUBLIC_SITE_ORIGIN: https://vectorcontrol.tech
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # --branch main：Pages 项目 production branch 是 main，否则落 preview
+          command: pages deploy dist --project-name=vectorcontrol-web --branch main
