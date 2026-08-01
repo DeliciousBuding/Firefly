@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "公告",
 
 	// 公告内容
-	content: "欢迎来到我的博客！这是一则示例公告。",
+	content: "🚀 博客刚上线，内容还在慢慢补。欢迎通过 RSS 订阅，或在 GitHub 上找到我。",
 
 	// 是否允许用户关闭公告
 	closable: true,
@@ -14,10 +14,10 @@ export const announcementConfig: AnnouncementConfig = {
 		// 启用链接
 		enable: true,
 		// 链接文本
-		text: "了解更多",
+		text: "GitHub",
 		// 链接 URL
-		url: "/about/",
-		// 内部链接
-		external: false,
+		url: "https://github.com/DeliciousBuding",
+		// 外部链接
+		external: true,
 	},
 };
