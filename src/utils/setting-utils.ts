@@ -65,6 +65,10 @@ export function getHue(): number {
 	if (typeof window === "undefined" || !window.localStorage) {
 		return getDefaultHue();
 	}
+	// fixed 模式（隐藏主题色选择器）：强制返回配置色相，忽略 localStorage 旧值
+	if (siteConfig.themeColor.fixed) {
+		return siteConfig.themeColor.hue;
+	}
 	const stored = localStorage.getItem("hue");
 	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
 }
