@@ -252,6 +252,7 @@ const canonicalUrl = Astro.site
         BANNER_HEIGHT_EXTEND,
         PAGE_WIDTH,
         configHue,
+        fixedHue: siteConfig.themeColor.fixed ?? false,
         defaultMode: siteConfig.themeColor.defaultMode ?? "light",
         defaultWallpaperMode: backgroundWallpaper.mode,
         isWallpaperSwitchable:
@@ -302,7 +303,8 @@ const canonicalUrl = Astro.site
       );
 
       // Load the hue from local storage
-      const hue = localStorage.getItem("hue") || configHue;
+      // fixed 模式（隐藏主题色选择器）时强制使用配置色相，忽略 localStorage 旧值
+      const hue = fixedHue ? configHue : localStorage.getItem("hue") || configHue;
       document.documentElement.style.setProperty("--hue", hue);
 
       // 设置卡片透明度（全屏透明模式下使用），优先使用用户自定义值
