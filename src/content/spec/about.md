@@ -1,29 +1,39 @@
-# 关于我 / About Me
+# 关于我 / About
 
-你好！我是 **夏叶** ，一个在数字世界中默默无闻的一片叶子。
+**delicious233（美味的布丁）** — ops · AI · edge · notes
 
-## 🛠️ 关于本站
+你好！我构建 AI 原生的开发者工具、研究系统与实用基础设施。我的工作处在 AI 研究与系统工程之间：agent 工作流、模型网关、评测工具链、浏览器自动化、MCP 工具、监控代理，以及本地优先的小工具。
 
-这个网站使用 **Astro** 框架构建，采用了 [Firefly](https://github.com/CuteLeaf/Firefly) 模板，Firefly 是基于 [Fuwari](https://github.com/saicaca/fuwari) 的二次开发。
+> I build AI-native developer tools, research systems, and practical infrastructure — between AI research and systems engineering: agent workflows, model gateways, evaluation tooling, browser automation, MCP tools, monitoring agents, and local-first utilities.
 
-**Firefly** 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。
+## 技术栈 / Stack
 
+TypeScript · React · Node.js · Go · Python · Rust · PyTorch · Docker · PostgreSQL · Redis · GitHub Actions
 
-**🖥️在线预览： [Firefly - Demo site](https://firefly.cuteleaf.cn/)**
+## 关注方向 / Focus
 
-**🏠我的博客： [https://blog.cuteleaf.cn](https://blog.cuteleaf.cn/)**
+- AI agents、工具调用与工作流自动化 / AI agents, tool use, and workflow automation
+- LLM 网关、路由、供应商运营与可观测性 / LLM gateways, routing, provider operations, and observability
+- 可复现研究工具链（评测、隐私、安全实验）/ Reproducible research tooling for evaluation, privacy, and safety experiments
+- 易于运行、检查与维护的系统 / Systems that are easy to run, inspect, and maintain
 
-**📝Firefly使用文档： [https://docs-firefly.cuteleaf.cn](https://docs-firefly.cuteleaf.cn/)**
+## 项目 / Projects
 
-**⭐Firefly开源地址：[https://github.com/CuteLeaf/Firefly](https://github.com/CuteLeaf/Firefly)** 
+::github{repo="TokenDanceLab/AgentHub"}
 
-**⭐Fuwari开源地址：[https://github.com/saicaca/fuwari](https://github.com/saicaca/fuwari)**
+::github{repo="TokenDanceLab/tokendance-code"}
 
-::github{repo="CuteLeaf/Firefly"}
+::github{repo="DeliciousBuding/dida-cli"}
 
-::github{repo="saicaca/fuwari"}
+::github{repo="DeliciousBuding/DiffAudit-Research"}
 
----
+## 相关站点 / Sites
 
-*感谢你的来访！希望在这里能找到对你有用的内容！*
+- [TokenDance Lab](https://tokendancelab.com/) — 组织主页与产品矩阵
+- [TokenDance Gateway](https://api.tokendancelab.com/) — 词元跳动 API 网关
+- [GitHub](https://github.com/DeliciousBuding) — DeliciousBuding
+- [RSS](/rss.xml) — 订阅本站
 
+## 本站 / This Site
+
+基于 [Astro](https://astro.build/) 与 [Firefly](https://github.com/CuteLeaf/Firefly) 主题构建的个人博客，记录运维经验、AI 研究与随手笔记。

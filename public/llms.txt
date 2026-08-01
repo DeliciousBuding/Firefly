@@ -1,0 +1,14 @@
+# delicious233 — 美味的布丁
+
+> ops · AI · edge · notes。构建 AI 原生开发者工具、研究系统与实用基础设施：agent 工作流、模型网关、评测工具链、浏览器自动化、MCP 工具与本地优先工具。技术笔记与运维经验。
+> I build AI-native developer tools, research systems, and practical infrastructure: agent workflows, model gateways, evaluation tooling, browser automation, MCP tools, monitoring agents, and local-first utilities.
+
+## 链接 / Links
+
+- [主页 / Home](https://vectorcontrol.tech/)
+- [文章归档 / Archive](https://vectorcontrol.tech/archive/)
+- [分类 / Categories](https://vectorcontrol.tech/categories/)
+- [标签 / Tags](https://vectorcontrol.tech/tags/)
+- [关于 / About](https://vectorcontrol.tech/about/)
+- [RSS](https://vectorcontrol.tech/rss.xml)
+- [GitHub](https://github.com/DeliciousBuding)
