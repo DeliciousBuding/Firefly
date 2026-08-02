@@ -141,7 +141,11 @@ const relatedPosts = await getRelatedPosts(entry, 5);
   lang={entry.data.lang}
   setOGTypeArticle={true}
   postSlug={entry.id}
-  ogImage={posterCoverUrl || undefined}
+  ogImage={
+    posterCoverUrl
+      ? new URL(posterCoverUrl, Astro.site).toString()
+      : undefined
+  }
   postCategory={entry.data.category || undefined}
   headings={headings}
   encrypted={!!entry.data.password}
