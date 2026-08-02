@@ -40,9 +40,10 @@ interface Props {
 	lang?: string;
 	setOGTypeArticle?: boolean;
 	postSlug?: string;
+	ogImage?: string;
 }
 
-let { title, description, lang, setOGTypeArticle, postSlug } = Astro.props;
+let { title, description, lang, setOGTypeArticle, postSlug, ogImage } = Astro.props;
 
 // apply a class to the body element to decide the height of the banner, only used for initial page load
 // Swup can update the body for each page visit, but it's after the page transition, causing a delay for banner height change
@@ -72,7 +73,9 @@ if (title) {
 }
 
 let ogImageUrl: string | undefined;
-if (siteConfig.post.generateOgImages && postSlug) {
+if (ogImage) {
+	ogImageUrl = ogImage;
+} else if (siteConfig.post.generateOgImages && postSlug) {
 	ogImageUrl = new URL(`/og/${postSlug}.png`, Astro.site).toString();
 }
 
@@ -143,6 +146,7 @@ const canonicalUrl = Astro.site
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
     <meta property="og:site_name" content={siteConfig.title} />
+    <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={pageTitle} />
     <meta
@@ -159,12 +163,13 @@ const canonicalUrl = Astro.site
     }
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta name="twitter:url" content={Astro.url} />
     <meta name="twitter:title" content={pageTitle} />
     <meta
       name="twitter:description"
       content={description || siteConfig.description || pageTitle}
     />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />

@@ -3,7 +3,9 @@ import type { SiteConfig } from "@/types/siteConfig";
 // Public shell follows the shared en-root contract. Individual posts keep
 // their own language and canonical URL; this L1 blog does not create a
 // duplicate /en tree.
-const SITE_LANG = "en";
+// 站点壳语言：内容与 UI 为中文，lang 声明 zh_CN（html lang="zh-CN"）。
+// 后续若有独立英文文章，用文章 frontmatter 的 lang 字段单独声明（en），无需 hreflang（无 /en/ 内容树）。
+const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题 — 个人品牌 delicious233；中文名「美味的布丁」

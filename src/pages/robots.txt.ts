@@ -10,7 +10,7 @@ const robotsTxt = (
 	isIndexable(site)
 		? `
 User-agent: *
-Disallow: /_astro/
+Allow: /
 
 Sitemap: ${new URL("sitemap-index.xml", site).href}
 `

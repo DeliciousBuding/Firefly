@@ -2,7 +2,6 @@ name: Pages CD
 
 # 博客自动部署：push 到 vectorcontrol-blog（生产分支）→ 构建 → Cloudflare Pages
 # 生产域 vectorcontrol.tech 由 Pages custom domain 承载，CI 不碰 DNS。
-# 政策：server 仓 github-actions-ci-cd-policy.md 类 E 变体（private 仓 + Pages CD）
 
 on:
   push:
@@ -12,6 +11,9 @@ on:
 concurrency:
   group: pages-deploy
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build-deploy:
@@ -28,6 +30,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm check
 
       # 生产构建：必须带生产域 env，robots meta / robots.txt 才放开索引（seo-utils）
       - name: Build (production origin)
